@@ -15,14 +15,6 @@ class ldap_auth ( $server="localhost", $base, $binddn, $bindpw, $filter ) {
     require => Package[$ldap_auth::params::packages],
   }
 
-  augeas { 'nsswitch.conf':
-    context => "/files/etc/nsswitch.conf",
-    changes => [
-      "set /files/etc/nsswitch.conf/database[. = 'passwd']/service[2] ldap",
-      "set /files/etc/nsswitch.conf/database[. = 'shadow']/service[2] ldap",
-    ],
-  }
-
   service { $ldap_auth::params::nslcd_service:
     ensure => running,
     require => File["/etc/nslcd.conf"],
@@ -37,6 +29,24 @@ class ldap_auth ( $server="localhost", $base, $binddn, $bindpw, $filter ) {
 				require => Package[$ldap_auth::params::packages],
 				onlyif => "/bin/grep 'dc=example,dc=com' /etc/nslcd.conf";
 			}
-			}
-	}	
+
+      augeas { 'nsswitch.conf':
+        context => "/files/etc/nsswitch.conf",
+        changes => [
+          "set /files/etc/nsswitch.conf/database[1]/passwd[2] ldap",
+          "set /files/etc/nsswitch.conf/database[1]/shadow[2] ldap",
+        ],
+      }
+    }
+
+    "Debian": {
+      augeas { 'nsswitch.conf':
+        context => "/files/etc/nsswitch.conf",
+        changes => [
+          "set /files/etc/nsswitch.conf/database[. = 'passwd']/service[2] ldap",
+          "set /files/etc/nsswitch.conf/database[. = 'shadow']/service[2] ldap",
+        ],
+      }
+    }
+	}
 }
