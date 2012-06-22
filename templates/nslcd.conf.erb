@@ -19,7 +19,9 @@ base <%= base %>
 binddn <%= binddn %>
 bindpw <%= bindpw %>
 
-filter <%= filter %>
+<% filter.each do |f| -%>
+filter <%= f %>
+<% end -%>
 
 # The DN used for password modifications by root.
 #rootpwmoddn !NO-MODIFICATIONS!
