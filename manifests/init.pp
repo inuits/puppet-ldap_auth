@@ -13,6 +13,7 @@ class ldap_auth ( $server="localhost", $base, $binddn, $bindpw, $filter ) {
     mode    => 0640,
     content => template('ldap_auth/nslcd.conf.erb'),
     require => Package[$ldap_auth::params::packages],
+    notify  => Service[$ldap_auth::params::nslcd_service],
   }
 
   service { $ldap_auth::params::nslcd_service:
