@@ -36,7 +36,8 @@ class ldap_auth ( $server="localhost", $base, $binddn, $bindpw, $filter ) {
 			exec { "authconfig --enableldap --enableldapauth --ldapserver=$server --ldapbasedn=$base --enablemkhomedir --update":
 				path => ["/usr/bin", "/usr/sbin"],
 				require => Package[$ldap_auth::params::packages],
-				unless => "/bin/grep 'ldap' /etc/nsswitch.conf";
+				unless => "/bin/grep 'ldap' /etc/nsswitch.conf",
+        notify => "$ldap_auth::params::nslcd_service",
 			}
     }
 	}
