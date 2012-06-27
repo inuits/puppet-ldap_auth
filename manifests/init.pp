@@ -39,6 +39,7 @@ class ldap_auth ( $server="localhost", $base, $binddn, $bindpw, $filter ) {
 				require => Package[$ldap_auth::params::packages],
 				unless => "/bin/grep 'ldap' /etc/nsswitch.conf",
         notify => Service["$ldap_auth::params::nslcd_service"],
+        before => Augeas['nsswitch.conf'],
 			}
     }
 	}
