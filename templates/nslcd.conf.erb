@@ -7,19 +7,19 @@ uid nslcd
 gid nslcd
 
 # The location at which the LDAP server(s) should be reachable.
-uri ldap://<%= server %>
+uri ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
 
 # The search base that will be used for all queries.
-base <%= base %>
+base <%= scope.lookupvar('::ldap_auth::params::_base') %>
 
 # The LDAP protocol version to use.
 #ldap_version 3
 
 # The DN to bind with for normal lookups.
-binddn <%= binddn %>
-bindpw <%= bindpw %>
+binddn <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+bindpw <%= scope.lookupvar('::ldap_auth::params::_bindpw') %>
 
-<% filter.each do |f| -%>
+<% scope.lookupvar('::ldap_auth::params::_filter').each do |f| -%>
 filter <%= f %>
 <% end -%>
 
