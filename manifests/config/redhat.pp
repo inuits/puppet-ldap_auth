@@ -5,11 +5,11 @@ class ldap_auth::config::redhat {
     group   => 'nslcd',
     mode    => '0640',
     content => template('ldap_auth/nslcd.conf.erb'),
-    require => Package[$ldap_auth::params::packages],
-    notify  => Service[$ldap_auth::params::nslcd_service],
+    require => Package[$::ldap_auth::params::_packages],
+    notify  => Service[$::ldap_auth::params::_nslcd_service],
   }
 
-  service{$ldap_auth::params::nslcd_service:
+  service{$::ldap_auth::params::_nslcd_service:
     ensure  => 'running',
     require => File["/etc/nslcd.conf"],
   }
