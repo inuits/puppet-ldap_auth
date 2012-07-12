@@ -1,5 +1,7 @@
 uri         ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
 base        <%= scope.lookupvar('::ldap_auth::params::_base') %>
+binddn      <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+bindpw      <%= scope.lookupvar('::ldap_auth::params::_bindpw') %>
 rootbinddn  <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
 bind_policy soft
 
