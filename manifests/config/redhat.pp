@@ -5,4 +5,6 @@ class ldap_auth::config::redhat {
     /^5/: { include ldap_auth::config::redhat::5 }
   }
 
+  include ::ldap_auth::config::redhat::common
+
 }
