@@ -1,0 +1,8 @@
+uri         ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
+base        <%= scope.lookupvar('::ldap_auth::params::_base') %>
+rootbinddn  <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+bind_policy soft
+
+nss_base_passwd ou=people,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
+nss_base_shadow ou=people,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
+nss_base_group  ou=groups,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
