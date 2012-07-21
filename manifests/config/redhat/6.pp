@@ -11,7 +11,7 @@ class ldap_auth::config::redhat::6 {
 
   service{$::ldap_auth::params::_nslcd_service:
     ensure  => 'running',
-    require => File["/etc/nslcd.conf"],
+    require => File['/etc/nslcd.conf'],
   }
 
   group{'nslcd':
