@@ -1,0 +1,26 @@
+############################################
+# Managed by Puppet  through ldap_auth mod #
+############################################
+
+USEWINBINDAUTH=<%= scope.lookupvar('::ldap_auth::params::_usewinbindauth') %>
+USEKERBEROS=<%= scope.lookupvar('::ldap_auth::params::_usekerberos') %>
+USESYSNETAUTH=<%= scope.lookupvar('::ldap_auth::params::_usesysnetauth') %>
+USEPAMACCESS=<%= scope.lookupvar('::ldap_auth::params::_usepamaccess') %>
+USESSSDAUTH=<%= scope.lookupvar('::ldap_auth::params::_usesssdauth') %>
+FORCESMARTCARD=<%= scope.lookupvar('::ldap_auth::params::_forcesmartcard') %>
+USESMBAUTH=<%= scope.lookupvar('::ldap_auth::params::_usesmbauth') %>
+USESMARTCARD=<%= scope.lookupvar('::ldap_auth::params::_usesmartcard') %>
+USELDAPAUTH=<%= scope.lookupvar('::ldap_auth::params::_useldapauth') %>
+USEPASSWDQC=<%= scope.lookupvar('::ldap_auth::params::_usepasswdqc') %>
+USESSSD=<%= scope.lookupvar('::ldap_auth::params::_usesssd') %>
+USEWINBIND=<%= scope.lookupvar('::ldap_auth::params::_usewinbind') %>
+USESHADOW=<%= scope.lookupvar('::ldap_auth::params::_useshadow') %>
+USEDB=<%= scope.lookupvar('::ldap_auth::params::_usedb') %>
+USEHESIOD=<%= scope.lookupvar('::ldap_auth::params::_usehesiod') %>
+USELDAP=<%= scope.lookupvar('::ldap_auth::params::_useldap') %>
+PASSWDALGORITHM=<%= scope.lookupvar('::ldap_auth::params::_passwdalgorithm') %>
+USEMKHOMEDIR=<%= scope.lookupvar('::ldap_auth::params::_usemkhomedir') %>
+USELOCAUTHORIZE=<%= scope.lookupvar('::ldap_auth::params::_uselocauthorize') %>
+USECRACKLIB=<%= scope.lookupvar('::ldap_auth::params::_usecracklib') %>
+USENIS=<%= scope.lookupvar('::ldap_auth::params::_usenis') %>
+USEFPRINTD=<%= scope.lookupvar('::ldap_auth::params::_usefprintd') %>
