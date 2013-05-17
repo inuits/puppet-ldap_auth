@@ -19,5 +19,5 @@ class ldap_auth::config::redhat::5 {
     ensure => 'stopped',
   }
 
-  ldap_auth::config::redhat::common::pam_config { 'system-auth': }
+  ldap_auth::config::redhat::pam_config { 'system-auth': }
 }

@@ -29,6 +29,6 @@ class ldap_auth::config::redhat::6 {
   }
 
 
-  ldap_auth::config::redhat::common::pam_config { ['password-auth', 'system-auth']: }
+  ldap_auth::config::redhat::pam_config { ['password-auth', 'system-auth']: }
 
 }
