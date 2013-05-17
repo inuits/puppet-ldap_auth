@@ -5,7 +5,8 @@ class ldap_auth::params (
   $binddn        = undef,
   $bindpw        = undef,
   $filter        = undef,
-  $nslcd_service = undef
+  $nslcd_service = undef,
+  $ssl           = false,
 ) {
 
   ########################
@@ -50,6 +51,11 @@ class ldap_auth::params (
   $_filter = $filter ? {
     undef   => '',
     default => $filter,
+  }
+
+  $_ssl = $ssl ? {
+    true    => 'yes',
+    default => 'no',
   }
 
   ########################
