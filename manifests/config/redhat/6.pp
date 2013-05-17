@@ -19,4 +19,16 @@ class ldap_auth::config::redhat::6 {
     gid    => '7050',
   }
 
+  augeas{'authconfig':
+    context => '/files/etc/authconfig',
+    changes => [
+      'set /files/etc/sysconfig/authconfig/USELDAPAUTH yes',
+      'set /files/etc/sysconfig/authconfig/USELDAP yes',
+      'set /files/etc/sysconfig/authconfig/USEMKHOMEDIR yes',
+    ]
+  }
+
+
+  ldap_auth::config::redhat::common::pam_config { ['password-auth', 'system-auth']: }
+
 }
