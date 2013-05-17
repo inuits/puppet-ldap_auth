@@ -1,0 +1,19 @@
+# File managed by Puppet
+
+# The distinguished name of the search base.
+base <%= scope.lookupvar('::ldap_auth::params::_base') %>
+
+# Another way to specify your LDAP server is to provide an
+# uri with the server name. This allows to use
+# Unix Domain Sockets to connect to a local LDAP Server.
+uri ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
+
+# Netscape SDK LDAPS
+ssl <%= scope.lookupvar('::ldap_auth::params::_ssl') %>
+
+# CA certificates for server certificate verification
+# At least one of these are required if tls_checkpeer is "yes"
+tls_cacertdir /etc/openldap/cacerts
+
+# Hashing password algoritm
+pam_password md5
