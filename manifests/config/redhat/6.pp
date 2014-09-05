@@ -1,3 +1,11 @@
+# == Class:  ldap_auth::config::redhat::6
+#
+# RedHat EL6 specific ldap_auth configuration.
+#
+# * Sets up the nslcd service.
+# * Adjusts /etc/authconfig (using augeas).
+# * Configures pam password-auth and system-auth.
+#
 class ldap_auth::config::redhat::6 {
 
   file{'/etc/nslcd.conf':

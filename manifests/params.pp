@@ -1,3 +1,11 @@
+# == Class: ldap_auth::params
+#
+# Configures the default ldap_auth parameters based on
+# the distribution used.
+#
+# If you want to add support for a new distribution, you
+# will want to start here.
+#
 class ldap_auth::params (
   $packages      = undef,
   $server        = undef,

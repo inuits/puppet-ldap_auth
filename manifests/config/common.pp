@@ -1,3 +1,9 @@
+# == Class: ldap_auth::config::common
+#
+# Uses augeas to configure /etc/nsswitch.conf.
+#
+# Adds the ldap service to passwd, shadow and group.
+#
 class ldap_auth::config::common {
 
   augeas{'nsswitch.conf':

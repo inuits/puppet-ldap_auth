@@ -1,5 +1,11 @@
-class ldap_auth::config::redhat::common
-{
+# == Class: ldap_auth::config::redhat::common
+#
+# RedHat EL* overlapping configuration.
+#
+# * Adjusts /etc/pam_ldap.conf.
+# * Configures /etc/nsswitch.conf (using augeas).
+#
+class ldap_auth::config::redhat::common {
 
   file {'/etc/pam_ldap.conf':
     owner   => 'root',

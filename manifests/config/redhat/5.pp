@@ -1,3 +1,12 @@
+# == Class: ldap_auth::config::redhat::5
+#
+# RedHat EL5 specific configuration.
+#
+# * Creates /etc/ldap.conf.
+# * Sets /etc/ldap.secret.
+# * Disables nscd service.
+# * Configures pam system-auth.
+#
 class ldap_auth::config::redhat::5 {
 
   File{

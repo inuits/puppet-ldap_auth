@@ -1,3 +1,11 @@
+# == Definition: ldap_auth::config::redhat::pam_config
+#
+# Configures pam authentication services using augeas for redhat flavors.
+#
+# === Parameters:
+#
+# [*name*]    The pam module to configure.
+#
 define ldap_auth::config::redhat::pam_config() {
 
   augeas {"${name}_auth":
@@ -9,7 +17,7 @@ define ldap_auth::config::redhat::pam_config() {
       'set 01/module pam_ldap.so',
       'set 01/argument use_first_pass',
     ],
-    onlyif => 'get *[type = "auth"][module = "pam_ldap.so"][argument = "use_first_pass"]/type != auth',
+    onlyif  => 'get *[type = "auth"][module = "pam_ldap.so"][argument = "use_first_pass"]/type != auth',
   }
 
   augeas {"${name}_account_broken_shadow":
@@ -27,7 +35,7 @@ define ldap_auth::config::redhat::pam_config() {
       'set 01/control "[default=bad success=ok user_unknown=ignore]"',
       'set 01/module pam_ldap.so',
     ],
-    onlyif => 'get *[type = "account"][control = "[default=bad success=ok user_unknown=ignore]"][module = "pam_ldap.so"]/type != account',
+    onlyif  => 'get *[type = "account"][control = "[default=bad success=ok user_unknown=ignore]"][module = "pam_ldap.so"]/type != account',
   }
 
   augeas {"${name}_password":
@@ -39,7 +47,7 @@ define ldap_auth::config::redhat::pam_config() {
       'set 01/module pam_ldap.so',
       'set 01/argument use_authtok',
     ],
-    onlyif => 'get *[type = "password"][control = "sufficient"][module = "pam_ldap.so"][argument = "use_authtok"]/type != password',
+    onlyif  => 'get *[type = "password"][control = "sufficient"][module = "pam_ldap.so"][argument = "use_authtok"]/type != password',
   }
 
   augeas {"${name}_session_pam_mkhomedir":
@@ -50,7 +58,7 @@ define ldap_auth::config::redhat::pam_config() {
       'set 01/control optional',
       'set 01/module pam_mkhomedir.so',
     ],
-    onlyif => 'get *[type = "session"][control = "optional"][module = "pam_mkhomedir.so"]/type != session',
+    onlyif  => 'get *[type = "session"][control = "optional"][module = "pam_mkhomedir.so"]/type != session',
   }
 
   augeas {"${name}_session_pam_ldap":
@@ -61,6 +69,6 @@ define ldap_auth::config::redhat::pam_config() {
       'set 01/control optional',
       'set 01/module pam_ldap.so',
     ],
-    onlyif => 'get *[type = "session"][control = "optional"][module = "pam_ldap.so"]/type != session',
+    onlyif  => 'get *[type = "session"][control = "optional"][module = "pam_ldap.so"]/type != session',
   }
 }

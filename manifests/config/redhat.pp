@@ -1,3 +1,8 @@
+# == Class: ldap_auth::config::redhat
+#
+# Splits redhat configuration into major version specific configuration
+# and includes a overlapping common class.
+#
 class ldap_auth::config::redhat {
 
   case $::operatingsystemrelease {

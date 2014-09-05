@@ -1,3 +1,8 @@
+# == Class: ldap_auth::config::debian
+#
+# Debian-ish specific configuration of the pam_mkhomedir configuration file.
+# Uses augeas to change /etc/pam.d/common-session
+#
 class ldap_auth::config::debian {
 
   augeas{'pam_mkhomedir.so':
