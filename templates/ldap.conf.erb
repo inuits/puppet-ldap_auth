@@ -1,3 +1,8 @@
+### File managed with puppet ###
+## Served by:        '<%= scope.lookupvar('::servername') %>'
+## Module:           'ldap_auth'
+## Template source:  'ldap.conf.erb'
+
 uri         ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
 base        <%= scope.lookupvar('::ldap_auth::params::_base') %>
 binddn      <%= scope.lookupvar('::ldap_auth::params::_binddn') %>

@@ -1,4 +1,7 @@
-# File managed by Puppet
+### File managed with puppet ###
+## Served by:        '<%= scope.lookupvar('::servername') %>'
+## Module:           'ldap_auth'
+## Template source:  'nslcd.conf.erb'
 
 # The distinguished name of the search base.
 base <%= scope.lookupvar('::ldap_auth::params::_base') %>
