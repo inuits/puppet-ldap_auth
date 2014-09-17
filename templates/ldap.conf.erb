@@ -3,7 +3,10 @@
 ## Module:           'ldap_auth'
 ## Template source:  'ldap.conf.erb'
 
-uri         ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
+<% scope.lookupvar('::ldap_auth::params::_servers').each do |servername| -%>
+uri ldap://<%= servername %>
+<% end -%>
+
 base        <%= scope.lookupvar('::ldap_auth::params::_base') %>
 binddn      <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
 bindpw      <%= scope.lookupvar('::ldap_auth::params::_bindpw') %>

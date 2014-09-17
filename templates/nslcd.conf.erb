@@ -12,7 +12,9 @@ uid nslcd
 gid nslcd
 
 # The location at which the LDAP server(s) should be reachable.
-uri ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
+<% scope.lookupvar('::ldap_auth::params::_servers').each do |servername| -%>
+uri ldap://<%= servername %>
+<% end -%>
 
 # The search base that will be used for all queries.
 base <%= scope.lookupvar('::ldap_auth::params::_base') %>

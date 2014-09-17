@@ -9,7 +9,9 @@ base <%= scope.lookupvar('::ldap_auth::params::_base') %>
 # Another way to specify your LDAP server is to provide an
 # uri with the server name. This allows to use
 # Unix Domain Sockets to connect to a local LDAP Server.
-uri ldap://<%= scope.lookupvar('::ldap_auth::params::_server') %>
+<% scope.lookupvar('::ldap_auth::params::_servers').each do |servername| -%>
+uri ldap://<%= servername %>
+<% end -%>
 
 # Netscape SDK LDAPS
 ssl <%= scope.lookupvar('::ldap_auth::params::_ssl') %>

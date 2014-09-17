@@ -9,6 +9,7 @@
 class ldap_auth::params (
   $packages      = undef,
   $server        = undef,
+  $servers       = undef,
   $base          = undef,
   $binddn        = undef,
   $bindpw        = undef,
@@ -36,9 +37,12 @@ class ldap_auth::params (
   ####     Config     ####
   ########################
 
-  $_server = $server ? {
-    undef   => 'localhost',
-    default => $server,
+  $_servers = $servers ? {
+    undef   => $server ? {
+      undef => ['localhost'],
+      default => [$server],
+    },
+    default => $servers,
   }
 
   $_base   = $base ? {
