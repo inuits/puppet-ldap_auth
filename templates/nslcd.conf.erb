@@ -40,3 +40,8 @@ filter <%= f %>
 # The search scope.
 #scope sub
 
+# Set idle timeout on LDAP session (default 3600)
+#idle_timelimit 3600
+
+# nslcd until 0.7.8 (CentOS 6) has issues with long time connection
+idle_timelimit 180
