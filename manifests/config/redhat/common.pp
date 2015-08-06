@@ -12,9 +12,9 @@ class ldap_auth::config::redhat::common {
     group   => 'root',
     mode    => '0644',
     content => template('ldap_auth/pam_ldap.conf.erb'),
-    require => Package[$::ldap_auth::params::_packages],
+    require => Package[$::ldap_auth::params::private_packages],
     notify  => operatingsystemrelease ? {
-      /^6/    => Service[$::ldap_auth::params::_nslcd_service],
+      /^6/    => Service[$::ldap_auth::params::private_nslcd_service],
       default => undef,
     },
   }

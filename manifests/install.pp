@@ -5,7 +5,7 @@
 #
 class ldap_auth::install {
 
-  package {$::ldap_auth::params::_packages:
+  package {$::ldap_auth::params::private_packages:
     ensure => 'installed',
   }
 

@@ -3,16 +3,16 @@
 ## Module:           'ldap_auth'
 ## Template source:  'ldap.conf.erb'
 
-<% [scope.lookupvar('::ldap_auth::params::_server')].flatten.each do |servername| -%>
+<% [scope.lookupvar('::ldap_auth::params::private_server')].flatten.each do |servername| -%>
 uri ldap://<%= servername %>
 <% end -%>
 
-base        <%= scope.lookupvar('::ldap_auth::params::_base') %>
-binddn      <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+base        <%= scope.lookupvar('::ldap_auth::params::private_base') %>
+binddn      <%= scope.lookupvar('::ldap_auth::params::private_binddn') %>
 bindpw      <%= scope.lookupvar('::ldap_auth::params::private_bindpw') %>
-rootbinddn  <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+rootbinddn  <%= scope.lookupvar('::ldap_auth::params::private_binddn') %>
 bind_policy soft
 
-nss_base_passwd ou=people,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
-nss_base_shadow ou=people,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
-nss_base_group  ou=groups,<%= scope.lookupvar('::ldap_auth::params::_base') %>?one
+nss_base_passwd ou=people,<%= scope.lookupvar('::ldap_auth::params::private_base') %>?one
+nss_base_shadow ou=people,<%= scope.lookupvar('::ldap_auth::params::private_base') %>?one
+nss_base_group  ou=groups,<%= scope.lookupvar('::ldap_auth::params::private_base') %>?one

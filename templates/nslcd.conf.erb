@@ -12,21 +12,21 @@ uid nslcd
 gid nslcd
 
 # The location at which the LDAP server(s) should be reachable.
-<% [scope.lookupvar('::ldap_auth::params::_server')].flatten.each do |servername| -%>
+<% [scope.lookupvar('::ldap_auth::params::private_server')].flatten.each do |servername| -%>
 uri ldap://<%= servername %>
 <% end -%>
 
 # The search base that will be used for all queries.
-base <%= scope.lookupvar('::ldap_auth::params::_base') %>
+base <%= scope.lookupvar('::ldap_auth::params::private_base') %>
 
 # The LDAP protocol version to use.
 #ldap_version 3
 
 # The DN to bind with for normal lookups.
-binddn <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
+binddn <%= scope.lookupvar('::ldap_auth::params::private_binddn') %>
 bindpw <%= scope.lookupvar('::ldap_auth::params::private_bindpw') %>
 
-<% scope.lookupvar('::ldap_auth::params::_filter').each do |f| -%>
+<% scope.lookupvar('::ldap_auth::params::private_filter').each do |f| -%>
 filter <%= f %>
 <% end -%>
 

@@ -21,7 +21,7 @@ class ldap_auth::params (
   ####    Packages    ####
   ########################
 
-  $_packages = $packages ? {
+  $private_packages = $packages ? {
     undef   => $::operatingsystem ? {
       /(CentOS|Redhat|Fedora)/  => $::operatingsystemrelease ? {
         default => [ "nss-pam-ldapd.${::architecture}" ],
@@ -36,17 +36,17 @@ class ldap_auth::params (
   ####     Config     ####
   ########################
 
-  $_server = $server ? {
+  $private_server = $server ? {
     undef   => 'localhost',
     default => $server,
   }
 
-  $_base   = $base ? {
+  $private_base   = $base ? {
     undef   => '',
     default => $base,
   }
 
-  $_binddn = $binddn ? {
+  $private_binddn = $binddn ? {
     undef   => '',
     default => $binddn,
   }
@@ -56,12 +56,12 @@ class ldap_auth::params (
     default => $bindpw,
   }
 
-  $_filter = $filter ? {
+  $private_filter = $filter ? {
     undef   => '',
     default => $filter,
   }
 
-  $_ssl = $ssl ? {
+  $private_ssl = $ssl ? {
     true    => 'yes',
     default => 'no',
   }
@@ -70,7 +70,7 @@ class ldap_auth::params (
   ####    Service     ####
   ########################
 
-  $_nslcd_service = $nslcd_service ? {
+  $private_nslcd_service = $nslcd_service ? {
     undef   => 'nslcd',
     default => $nslcd_service,
   }

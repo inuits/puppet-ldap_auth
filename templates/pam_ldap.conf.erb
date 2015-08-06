@@ -4,17 +4,17 @@
 ## Template source:  'nslcd.conf.erb'
 
 # The distinguished name of the search base.
-base <%= scope.lookupvar('::ldap_auth::params::_base') %>
+base <%= scope.lookupvar('::ldap_auth::params::private_base') %>
 
 # Another way to specify your LDAP server is to provide an
 # uri with the server name. This allows to use
 # Unix Domain Sockets to connect to a local LDAP Server.
-<% [scope.lookupvar('::ldap_auth::params::_server')].flatten.each do |servername| -%>
+<% [scope.lookupvar('::ldap_auth::params::private_server')].flatten.each do |servername| -%>
 uri ldap://<%= servername %>
 <% end -%>
 
 # Netscape SDK LDAPS
-ssl <%= scope.lookupvar('::ldap_auth::params::_ssl') %>
+ssl <%= scope.lookupvar('::ldap_auth::params::private_ssl') %>
 
 # CA certificates for server certificate verification
 # At least one of these are required if tls_checkpeer is "yes"
