@@ -24,7 +24,7 @@ base <%= scope.lookupvar('::ldap_auth::params::_base') %>
 
 # The DN to bind with for normal lookups.
 binddn <%= scope.lookupvar('::ldap_auth::params::_binddn') %>
-bindpw <%= scope.lookupvar('::ldap_auth::params::_bindpw') %>
+bindpw <%= scope.lookupvar('::ldap_auth::params::private_bindpw') %>
 
 <% scope.lookupvar('::ldap_auth::params::_filter').each do |f| -%>
 filter <%= f %>

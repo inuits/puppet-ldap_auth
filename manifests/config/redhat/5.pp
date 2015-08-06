@@ -21,7 +21,7 @@ class ldap_auth::config::redhat::5 {
 
   file{'/etc/ldap.secret':
     mode    => '0600',
-    content => "${ldap_auth::params::_bindpw}\n",
+    content => "${ldap_auth::params::private_bindpw}\n",
   }
 
   service{'nscd':

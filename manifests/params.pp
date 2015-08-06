@@ -51,7 +51,7 @@ class ldap_auth::params (
     default => $binddn,
   }
 
-  $_bindpw = $bindpw ? {
+  $private_bindpw = $bindpw ? {
     undef   => '',
     default => $bindpw,
   }
